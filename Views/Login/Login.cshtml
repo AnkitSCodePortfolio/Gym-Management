@@ -1,0 +1,99 @@
+﻿@model Gym_Management.Models.LoginDTO
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<body>
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-6 col-lg-5 d-none d-md-block">
+                <img src="~/Pictures/png.jpg" alt="login form" class="img-fluid">
+            </div>
+            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                <div class="card-body p-4 p-lg-5 text-black">
+                    @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+                    {
+                        <h5 class="fw-normal mb-3" style="letter-spacing: 1px;">Sign into your account</h5>
+
+                        <div class="form-outline mb-1">
+                           @Html.LabelFor(model =>model.Email,new{@class="required"})
+                            @Html.TextBoxFor(model =>model.Email,new { @class = "form-control textFontSize",placeholder = "UserName"})
+                        </div>
+
+                        <div class="form-outline mb-2">
+                            @Html.LabelFor(model=>model.Password,new {@class="required"})
+                            @Html.TextBoxFor(model=>model.Password,new{ @class = "form-control textFontSize",placeholder = "Password"})
+                        </div>
+                        <div class="row">
+                            <div class="col-auto">
+                                <div class="form-check" style="width: 20px; height: 20px; margin-top: 4px">
+                                    @Html.RadioButtonFor(model => model.Selected, ProfilesDTO.Admin, new { id = "admin", @class = "form-check-input" })
+                                    <label class="form-check-label" for="admin">Admin</label>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <div class="form-check">
+                                    @Html.RadioButtonFor(model => model.Selected, ProfilesDTO.Receptionist, new { id = "receptionist", @class = "form-check-input" })
+                                    <label class="form-check-label" for="receptionist">Receptionist</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="pt-1 mb-4">
+                            <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                        </div>
+                        <a class="small text-muted" href="#!">Forgot password?</a>
+                        <p class="mb-5 pb-lg-2" style="color: #393f81;">
+                            Don't have an account? <a href="#!" style="color: #393f81;"><b>Register here</b></a>
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-pzjw8h8+1xiC4jzVg7xRS6IQ++Xi6wD5/FGr+6j7gX4xwFqJzqA6b+xXaxc5v5/f" crossorigin="anonymous"></script>
+</body>
+<style>
+    .vh-100 {
+        height: 100vh;
+    }
+
+    body {
+        background-image: url('/Pictures/Bg.jpg');
+        background-size: cover;
+    }
+
+    .card {
+        border-radius: 1rem;
+        background-color: silver;
+        height: 550px;
+        width: 750px;
+    }
+
+    .img-fluid {
+        border-radius: 1rem 0 0 1rem;
+        object-fit: fill;
+        height: 550px;
+    }
+
+    .text-black {
+        color: black;
+    }
+
+    form {
+        margin-top: 1rem;
+    }
+
+    .form-outline {
+        margin-bottom: 1rem;
+    }
+
+    .btn-dark {
+        background-color: #343a40;
+        color: white;
+        border-color: #343a40;
+    }
+</style>
